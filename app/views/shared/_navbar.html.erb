@@ -1,29 +1,74 @@
-<div class="container-xl captain-navbar flex justify-between items-center">
+<nav class="flex items-center justify-between flex-wrap p-6">
 
-  <div class="d-flex">
-    <div>
-      <%= image_tag "logo.png", alt: "Captain Cause", width: 105, height: 42 %>
-    </div>
-    <div class="flex items-center">
-      <div class="flex text-sm mx-2">
-        <%= image_tag "icons/home.png", alt: "Home", width: 18, class:"icon mr-1" %>
-        Accueil
+  <div class="flex items-center flex-shrink-0 mr-6 mt-3 md:mt-0">
+    <%= image_tag "logo.png", alt: "Captain Cause", width: 105, height: 42 %>
+  </div>
+
+  <div class="block md:hidden" id="navbar-burger">
+    <button class="flex items-center px-3 py-2">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <div class="w-full hidden md:block flex-grow md:flex md:items-center md:w-auto" id="dropdown-menu">
+
+    <div class="text-sm md:flex-grow">
+
+      <div class="nav-item block md:inline-block mt-3 md:mt-0">
+        <div class="md:flex-grow flex mx-2">
+          <%= image_tag "icons/home.png", alt: "Home", width: 18, class:"icon mr-1" %>
+          Accueil
+        </div>
       </div>
 
-      <div class="flex text-sm mx-2 btn-violet p-2">
-        <%= image_tag "icons/circle.png", alt: "Opérations", width: 18, class:"icon mr-1" %>
-        Opérations
+      <div class="block md:inline-block mt-3 md:mt-0 ">
+        <div class="text-sm inline-flex mx-2 btn-violet p-2">
+          <%= image_tag "icons/circle.png", alt: "Opérations", width: 18, class:"icon mr-1" %>
+          <div class="">Opérations</div>
+        </div>
       </div>
 
-      <div class="flex text-sm mx-2">
-        <%= image_tag "icons/agenda.png", alt: "Projets", width: 18, class:"icon mr-1" %>
-        Projets
+      <div class="nav-item block md:inline-block mt-3 md:mt-0">
+        <div class="flex text-sm mx-2">
+          <%= image_tag "icons/agenda.png", alt: "Projets", width: 18, class:"icon mr-1" %>
+          Projets
+        </div>
       </div>
     </div>
   </div>
   
-  <div class="text-sm">
+  <div class="hidden md:block nav-item text-sm mt-4 md:mt-0 mx-2">
     Nathanael Romano
   </div>
 
-</div>
+</nav>
+
+<script>
+const animateNavbar = () => {
+  burger = document.querySelector("#navbar-burger");
+  dropdownMenu = document.querySelector("#dropdown-menu")
+  
+  // When the burger is clicked : show nav menu
+  burger.addEventListener("click", (event) => {
+    dropdownMenuToggle();
+  })
+  
+  // When a nav item is clicked : hide nav menu 
+  dropdownMenu.addEventListener("click", (event) => {
+     dropdownMenuToggle();
+  })
+
+  const dropdownMenuToggle = () => {
+    if (dropdownMenu.classList.contains("hidden")) {
+      dropdownMenu.classList.remove("hidden");
+      dropdownMenu.classList.add("block");
+    } else {
+      dropdownMenu.classList.remove("block");
+      dropdownMenu.classList.add("hidden");
+    }
+  } 
+  
+}
+
+animateNavbar();
+</script>
