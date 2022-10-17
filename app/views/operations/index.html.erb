@@ -1,0 +1,45 @@
+<div class="">
+  <div class="purple-banner">
+    <div class="flex justify-between">
+      <h1>Mes opérations</h1>
+      <%= link_to new_operation_path, class:"btn-shadow rounded-full bg-white py-2 px-4 flex items-center" do %>
+        <i class="fa-solid fa-plus mr-1"></i> Nouvelle opération
+      <% end %>
+    </div>
+  </div>
+
+  <div class="-mt-12">
+    <% @operations.each do |operation| %>
+      <div class="container bg-white mx-auto black-box p-2">
+        <div class="grid grid-cols-12 gap-2">
+          <div class="col-span-4">
+            <div class="inline py-1 px-2 rounded <%= 'btn-gris' if operation.state == "Cloturée"%><%= 'btn-vert' if operation.state == "En cours"%><%='btn-orange' if operation.state == "En attente de paiement"%><%= 'btn-bleu' if operation.state == "En préparation"%>"><%= operation.state %></div>
+            <div class="text-lg font-semibold mt-1"><%= operation.title %></div>
+          </div>
+          <div class="col-span-1">
+            <div class="text-2xl font-semibold"><%= operation.targets %></div>
+            <div class="text-gray-400 font-medium text-sm mt-1">Cibles</div>
+          </div>
+          <div class="col-span-1">
+            <div class="text-2xl font-semibold"><%= operation.votes %></div>
+            <div class="text-gray-400 font-medium text-sm mt-1">Votants</div>
+          </div>
+          <div class="col-span-2">
+            <div class="text-2xl font-semibold"><%= operation.total_amount %>€</div>
+            <div class="text-gray-400 font-medium text-sm mt-1">Montant total</div>
+          </div>
+          <div class="col-span-2">
+            <div class="text-2xl font-semibold"><%= operation.start_date ? operation.start_date.strftime("%m/%d/%Y") : "--/--/--"  %></div>
+            <div class="text-gray-400 font-medium text-sm mt-1">Début</div>
+          </div>
+          <div class="col-span-2">
+            <div class="text-2xl font-semibold"><%= operation.end_date ? operation.end_date.strftime("%m/%d/%Y") : "--/--/--"  %></div>
+            <div class="text-gray-400 font-medium text-sm mt-1">Fin</div>
+          </div>
+        </div>
+        <div class="mt-2"><%= operation.description %></div>
+      </div>
+      <br>
+    <% end %>
+  </div>
+</div>

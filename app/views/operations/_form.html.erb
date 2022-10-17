@@ -1,0 +1,12 @@
+<%= simple_form_for(@operation) do |f| %>
+  <%= f.input :title, label: "Titre" %>
+  <%= f.input :votes, label: "Votants" %>
+  <%= f.input :targets, label: "Cibles" %>
+  <%= f.input :state, label: "Statut", collection: ["Cloturée", "En cours", "En attente de paiement", "En préparation"] %>
+  <%= f.input :total_amount, label: "Montant total" %>
+  <%= f.input :start_date, label: "Début" %>
+  <%= f.input :end_date, label: "Fin" %>
+  <div class="w-full flex items-center">
+    <%= f.button :submit, "Enregistrer", class:"btn-shadow mx-auto" %>
+  </div>
+<% end %>
